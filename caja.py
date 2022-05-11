@@ -15,7 +15,7 @@ numeroInvalido = 1
 #MENÚ PRINCIPAL----------------------------------------------------------------------------------------------------------
 while repetirPrincipal == 1:
     print("--------------------------------")
-    menu = print("1. Mostrar inventario\n2. Mostrar carrito \n3. Añadir a cuenta de débito\n4. Retirar de la cuenta de débito\n5. Cobrar\n6. Salir")
+    menu = print("1. Mostrar inventario\n2. Mostrar carrito \n3. Añadir a cuenta de débito\n4. Retirar de la cuenta de débito\n5. Cobrar\n6. Agregar producto al inventario\n7. Eliminar producto del inventario\n8. Salir")
     opcionPrincipal = input("Escoja el número de opcion a seleccionar: ")
 
 #MENÚ INVENTARIO----------------------------------------------------------------------------------------------------------
@@ -24,13 +24,13 @@ while repetirPrincipal == 1:
         while repetirInventario == 1:
             print("--------------------------------")
             opcionInventario = input("1. Agregar producto a su carrito \n2. Eliminar producto de su carrito \n3. Atras\nDigite el número de opcion a seleccionar: ")
-#AGREGAR PRODUCTOS----------------------------------------------------------------------------------------------------------
+#AGREGAR PRODUCTOS AL CARRITO----------------------------------------------------------------------------------------------------------
             if (opcionInventario == "1"):
                 print("--------------------------------")
                 print("Los productos están divididos por categorías\n1. Aseo de Hogar\n2. Aseo Personal")
                 opcionCategoria = input("Seleccione la categoría de productos: ")
                 print("--------------------------------")
-#AGREGAR PRODUCTOS ASEO HOGAR----------------------------------------------------------------------------------------------------------                
+#AGREGAR PRODUCTOS AL CARRITO DE ASEO HOGAR----------------------------------------------------------------------------------------------------------                
                 if(opcionCategoria == "1"):
                         for key in inventarioAseoHogar:
                             print (key, ':', inventarioAseoHogar[key][0],"$")
@@ -45,7 +45,7 @@ while repetirPrincipal == 1:
                                 inventarioAseoHogar[agregarProducto.upper()].append(1)
                                 canastaCliente[agregarProducto.upper()] = inventarioAseoHogar[agregarProducto.upper()]
                             facturaCliente += canastaCliente[agregarProducto.upper()][0]
-#SEGUIR AGREGANDO O ELIMINANDO PRODUCTOS---------------------------------------------------------------------------------------------------
+#SEGUIR AGREGANDO O ELIMINANDO PRODUCTOS AL CARRITO---------------------------------------------------------------------------------------------------
                             opcionEquivocada = 1
                             while opcionEquivocada == 1:
                                 print("--------------------------------")
@@ -63,7 +63,7 @@ while repetirPrincipal == 1:
                         else:
                             print("--------------------------------")
                             print("Este producto no existe en el inventario, asegurese de digitar el nombre correctamente")
-#AGREGAR PRODUCTOS ASEO PERSONAL----------------------------------------------------------------------------------------------------------
+#AGREGAR PRODUCTOS AL CARRITO DE ASEO PERSONAL----------------------------------------------------------------------------------------------------------
                 elif(opcionCategoria == "2"):
                         for key in inventarioAseoPersonal:
                             print (key, ':', inventarioAseoPersonal[key][0],"$")
@@ -79,7 +79,7 @@ while repetirPrincipal == 1:
                                 canastaCliente[agregarProducto.upper()] = inventarioAseoPersonal[agregarProducto.upper()]
                             facturaCliente += inventarioAseoPersonal[agregarProducto.upper()][0]
                             
-#SEGUIR AGREGANDO O ELIMINANDO PRODUCTOS---------------------------------------------------------------------------------------------------
+#SEGUIR AGREGANDO O ELIMINANDO PRODUCTOS AL CARRITO---------------------------------------------------------------------------------------------------
                             opcionEquivocada = 1
                             while opcionEquivocada == 1:
                                 print("--------------------------------")
@@ -97,7 +97,7 @@ while repetirPrincipal == 1:
                         else:
                             print("--------------------------------")
                             print("Este producto no existe en el inventario, asegurese de digitar el nombre correctamente")
-#ELIMINAR UN PRODUCTO---------------------------------------------------------------------------------------------------------- 
+#ELIMINAR UN PRODUCTO DEL CARRITO---------------------------------------------------------------------------------------------------------- 
             elif(opcionInventario == "2"):
                 print("--------------------------------") 
                 print('Su inventario es el siguiente:')
@@ -113,7 +113,7 @@ while repetirPrincipal == 1:
                         del canastaCliente[productoEliminar.upper()]
                     print("--------------------------------") 
                     print(productoEliminar,'Ha sido eliminado de su carrito')
-#SEGUIR AGREGANO O ELIMINANDO PRODUCTOS---------------------------------------------------------------------------------------------------
+#SEGUIR AGREGANDO O ELIMINANDO PRODUCTOS---------------------------------------------------------------------------------------------------
                     opcionEquivocada = 1
                     while opcionEquivocada == 1:
                         print("--------------------------------")
@@ -232,8 +232,37 @@ while repetirPrincipal == 1:
             elif(cobrarDesdeOpcionCanasta == "2"):
                 tarjetaEquivocada = 0
                 repetirPrincipal = 1
-#SALIR----------------------------------------------------------------------------------------------------------------------------------------
+#AGREGAR PRODUCTO AL INVENTARIO------------------------------------------------------------------------------------------------------------------------
     elif(opcionPrincipal == "6"):
+        print("--------------------------------")
+        print("¿A cúal categoría desea agregar productos?")
+        categoriaAñadirInventario = input("1. Aseo Hogar\n2. Aseo Personal\nDigite el número de opción a elegir: ")
+#AÑADIR UN PRODUCTO AL INVENTARIO DE ASEO HOGAR-------------------------------------------------------------------------
+        if (categoriaAñadirInventario == "1"):
+            print("--------------------------------")
+            productoAgregar = input("Digite el nombre del producto que desea añadir al inventario Aseo Hogar: ")
+            if(not(productoAgregar.upper() in inventarioAseoHogar) or not(productoAgregar.upper() in inventarioAseoPersonal)):
+                precioProducto = input('Inserte el precio de %s: ' % productoAgregar.upper())
+                inventarioAseoHogar[productoAgregar.upper()] = [int(precioProducto)] 
+                print("--------------------------------")
+                print("Se ha agregado ",productoAgregar.upper()," al inventario")
+            else:
+                print("--------------------------------")
+                print(agregarProducto.upper()," ya se encuentra en el inventario")
+#AÑADIR UN PRODUCTO AL INVENTARIO DE ASEO HOGAR-------------------------------------------------------------------------
+        elif(categoriaAñadirInventario == "2"):
+            print("--------------------------------")
+            productoAgregar = input("Digite el nombre del producto que desea añadir al inventario Aseo Hogar: ")
+            if(not(productoAgregar.upper() in inventarioAseoHogar) or not(productoAgregar.upper() in inventarioAseoPersonal)):
+                precioProducto = input('Inserte el precio de %s: ' % productoAgregar.upper())
+                inventarioAseoPersonal[productoAgregar.upper()] = [int(precioProducto)] 
+                print("--------------------------------")
+                print("Se ha agregado ",productoAgregar.upper()," al inventario")
+            else:
+                print("--------------------------------")
+                print(agregarProducto.upper()," ya se encuentra en el inventario")
+#SALIR----------------------------------------------------------------------------------------------------------------------------------------
+    elif(opcionPrincipal == "8"):
         print("--------------------------------")
         print("¿Está seguro de que desea salir de la registradora?\n1. Sí\n2. No")
         salidaSegura = input("Digite el número de opción a seleccionar: ")
