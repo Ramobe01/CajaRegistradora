@@ -266,7 +266,7 @@ while repetirPrincipal == 1:
         print("--------------------------------")
         print("¿A cúal categoría desea eliminar productos?")
         categoriaEliminarInventario = input("1. Aseo Hogar\n2. Aseo Personal\nDigite el número de opción a elegir: ")
-#AÑADIR UN PRODUCTO AL INVENTARIO DE ASEO HOGAR-------------------------------------------------------------------------
+#ELIMINAR UN PRODUCTO DEL INVENTARIO DE ASEO HOGAR-------------------------------------------------------------------------
         if (categoriaEliminarInventario == "1"):
             print("--------------------------------")
             for key in inventarioAseoHogar:
@@ -280,7 +280,7 @@ while repetirPrincipal == 1:
             else:
                 print("--------------------------------")
                 print(agregarProducto.upper(),"no se encuentra en el inventario")
-#AÑADIR UN PRODUCTO AL INVENTARIO DE ASEO PERSONAL-------------------------------------------------------------------------
+#ELIMINAR UN PRODUCTO DEL INVENTARIO DE ASEO PERSONAL-------------------------------------------------------------------------
         elif(categoriaAñadirInventario == "2"):
             print("--------------------------------")
             for key in inventarioAseoPersonal:
