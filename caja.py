@@ -249,10 +249,10 @@ while repetirPrincipal == 1:
             else:
                 print("--------------------------------")
                 print(agregarProducto.upper()," ya se encuentra en el inventario")
-#AÑADIR UN PRODUCTO AL INVENTARIO DE ASEO HOGAR-------------------------------------------------------------------------
+#AÑADIR UN PRODUCTO AL INVENTARIO DE ASEO PERSONAL-------------------------------------------------------------------------
         elif(categoriaAñadirInventario == "2"):
             print("--------------------------------")
-            productoAgregar = input("Digite el nombre del producto que desea añadir al inventario Aseo Hogar: ")
+            productoAgregar = input("Digite el nombre del producto que desea añadir al inventario Aseo Personal: ")
             if(not(productoAgregar.upper() in inventarioAseoHogar) or not(productoAgregar.upper() in inventarioAseoPersonal)):
                 precioProducto = input('Inserte el precio de %s: ' % productoAgregar.upper())
                 inventarioAseoPersonal[productoAgregar.upper()] = [int(precioProducto)] 
@@ -261,6 +261,39 @@ while repetirPrincipal == 1:
             else:
                 print("--------------------------------")
                 print(agregarProducto.upper()," ya se encuentra en el inventario")
+#ELIMINAR PRODUCTO DEL INVENTARIO------------------------------------------------------------------------------------------------------------------------
+    elif(opcionPrincipal == "7"):
+        print("--------------------------------")
+        print("¿A cúal categoría desea eliminar productos?")
+        categoriaEliminarInventario = input("1. Aseo Hogar\n2. Aseo Personal\nDigite el número de opción a elegir: ")
+#AÑADIR UN PRODUCTO AL INVENTARIO DE ASEO HOGAR-------------------------------------------------------------------------
+        if (categoriaEliminarInventario == "1"):
+            print("--------------------------------")
+            for key in inventarioAseoHogar:
+                            print (key, ':', inventarioAseoHogar[key][0],"$")
+            print("--------------------------------")
+            eliminarProducto = input("Digite el nombre del producto que desea eliminar del inventario Aseo Hogar: ")
+            if(eliminarProducto.upper() in inventarioAseoHogar or eliminarProducto.upper() in inventarioAseoPersonal):
+                del inventarioAseoHogar[eliminarProducto.upper()]
+                print("--------------------------------")
+                print(eliminarProducto.upper(), "Ha sido eliminado del inventario Aseo Hogar")
+            else:
+                print("--------------------------------")
+                print(agregarProducto.upper(),"no se encuentra en el inventario")
+#AÑADIR UN PRODUCTO AL INVENTARIO DE ASEO PERSONAL-------------------------------------------------------------------------
+        elif(categoriaAñadirInventario == "2"):
+            print("--------------------------------")
+            for key in inventarioAseoPersonal:
+                            print (key, ':', inventarioAseoPersonal[key][0],"$")
+            print("--------------------------------")
+            eliminarProducto = input("Digite el nombre del producto que desea eliminar del inventario Aseo Personal: ")
+            if(eliminarProducto.upper() in inventarioAseoHogar or eliminarProducto.upper() in inventarioAseoPersonal):
+                del inventarioAseoHogar[eliminarProducto.upper()]
+                print("--------------------------------")
+                print(eliminarProducto.upper(), "Ha sido eliminado del inventario Aseo Personal")
+            else:
+                print("--------------------------------")
+                print(agregarProducto.upper()," no se encuentra en el inventario")
 #SALIR----------------------------------------------------------------------------------------------------------------------------------------
     elif(opcionPrincipal == "8"):
         print("--------------------------------")
